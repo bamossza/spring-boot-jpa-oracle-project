@@ -15,6 +15,9 @@ import org.slf4j.LoggerFactory;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import lombok.Getter;
+import lombok.Setter;
+
 @Entity
 @Table(name="CAR")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -27,18 +30,23 @@ public class Car implements Serializable {
 	@GeneratedValue(generator = "CAR_SEQ", strategy = GenerationType.SEQUENCE)
 	@SequenceGenerator(name = "CAR_SEQ", sequenceName = "CAR_SEQ", allocationSize=1)
 	@Column(name="CAR_ID", unique=true, nullable=false, precision=10, scale=0)
+	@Getter @Setter
 	private Integer carId;
     
 	@Column(name="CAR_BRAND", nullable = true, length = 50)
+	@Getter @Setter
 	private String carBrand;
 	
 	@Column(name="CAR_MODEL", nullable = true, length = 50)
+	@Getter @Setter
     private String carModel;
 	
 	@Column(name="HORSEPOWER", nullable = true, length = 6)
+	@Getter @Setter
     private String horsepower;
 	
 	@Column(name="CAR_ENGINE", nullable = true, length = 6)
+	@Getter @Setter
     private String carEngine;
 	
 	public Car(){}  
@@ -49,45 +57,4 @@ public class Car implements Serializable {
         this.horsepower = horsepower;
         this.carEngine = carEngine;
     }
-
-    public String getCarBrand() {
-        return carBrand;
-    }
-
-    public void setCarBrand(String carBrand) {
-        this.carBrand = carBrand;
-    }
-
-    public String getCarModel() {
-        return carModel;
-    }
-
-    public void setCarModel(String carModel) {
-        this.carModel = carModel;
-    }
-
-    public String getHorsepower() {
-        return horsepower;
-    }
-
-    public void setHorsepower(String horsepower) {
-        this.horsepower = horsepower;
-    }
-
-    public String getCarEngine() {
-        return carEngine;
-    }
-
-    public void setCarEngine(String carEngine) {
-        this.carEngine = carEngine;
-    }
-
-	public Integer getCarId() {
-		return carId;
-	}
-
-	public void setCarId(Integer carId) {
-		this.carId = carId;
-	}
-
 }
